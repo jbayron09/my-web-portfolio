@@ -1,0 +1,82 @@
+import type { IconType } from 'react-icons'
+import Image from 'next/image'
+import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
+
+interface Social {
+  icon: IconType
+  href: string
+}
+
+const socials: Social[] = [
+  {
+    icon: FaGithub,
+    href: '',
+  }, {
+    icon: FaLinkedin,
+    href: 'https://www.linkedin.com/in/jorge-bairon-bermudez-leon-6242b81b5',
+  }, {
+    icon: FaInstagram,
+    href: '',
+  }, {
+    icon: FaWhatsapp,
+    href: '',
+  },
+]
+
+const MainBanner = () => {
+  return (
+      <header id="home" className="py-16">
+        <div className="container grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+          <div className="text-center md:text-left">
+            <h1 className="text-2xl md:text-2xl font-bold bg-gradient-to-r to-violet-200 from-violet-600 dark:from-violet-600 dark:to-black bg-clip-text text-transparent">
+              +3 years experience
+            </h1>
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight text-gray-800 dark:text-white">
+              Hi, I&#39;m{' '}
+              <span className="text-purple-500">Bairon Bermudez</span>
+            </h1>
+            {/* Social Buttons */}
+            <div className="mt-4 flex justify-center md:justify-start space-x-2">
+              {socials.map(({ icon: Icon, href }, i) => (
+                  <a
+                      key={i}
+                      href={href}
+                      target="_blank"
+                      className="relative p-3 rounded-full overflow-hidden
+                 bg-gray-200 dark:bg-neutral-700 dark:text-white
+                 transition-all duration-300 group"
+                  >
+                    {/* Fondo animado en hover */}
+                    <span className="absolute inset-0 z-0 rounded-full scale-0 opacity-0
+                       bg-gradient-to-tr from-white to-violet-600
+                       dark:from-violet-600 dark:to-black
+                       transition-all duration-300 ease-out
+                       group-hover:scale-100 group-hover:opacity-100">
+                    </span>
+
+                    {/* Ícono siempre visible encima del fondo */}
+                    <span
+                        className="relative z-10 text-neutral-800 dark:text-white transition-all duration-300 group-hover:text-white">
+                      <Icon/>
+                    </span>
+                  </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative flex justify-center md:justify-end">
+            <div className="absolute aspect-square h-full rounded-full bg-purple-500 blur-3xl opacity-20"/>
+            <Image
+                alt="Julian Trujillo"
+                src="/images/bairon.png"
+                width={400}
+                height={400}
+                className="relative animate-floating"
+            />
+          </div>
+        </div>
+      </header>
+  )
+}
+
+export default MainBanner

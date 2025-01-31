@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* 🌑 Modo oscuro */
+    .dark body {
+        background: linear-gradient(90deg, #04000c, #1a0026, #2a0135);
+    }
+
+    /* ☀️ Modo claro */
+    body {
+        background: linear-gradient(90deg, #ffffff, #f7ecff, #e8d9ff);
+    }
+}
