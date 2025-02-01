@@ -31,7 +31,7 @@ const DarkModeToggleBtn = () => {
   }
 
   return (
-      <div className="fixed right-0 top-1/4 z-50 lg:top-[300px]">
+      <div className="fixed right-0 top-[100px] z-50 md:top-[300px]">
         <button
             className={clsx(
                 'group relative h-10 w-10 overflow-hidden rounded-l-full pl-3 transition-all hover:w-24',

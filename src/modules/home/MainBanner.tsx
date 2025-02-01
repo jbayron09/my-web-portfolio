@@ -16,7 +16,7 @@ const socials: Social[] = [
     href: 'https://www.linkedin.com/in/jorge-bairon-bermudez-leon-6242b81b5',
   }, {
     icon: FaInstagram,
-    href: '',
+    href: 'https://www.instagram.com/jbayron09/',
   }, {
     icon: FaWhatsapp,
     href: '',
@@ -25,10 +25,10 @@ const socials: Social[] = [
 
 const MainBanner = () => {
   return (
-      <header id="home" className="py-16 flex flex-col">
-        <div className="container grid grid-cols-1 md:grid-cols-2 items-center gap-8 bg-red-50s">
+      <header id="home" className="h-screen flex flex-col justify-center">
+        <div className="container grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <div className="text-center md:text-left">
-            <h1 className="text-2xl md:text-2xl font-bold bg-gradient-to-r to-violet-200 from-violet-600 dark:from-violet-600 dark:to-black bg-clip-text text-transparent">
+            <h1 className="text-2xl md:text-2xl font-bold bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
               +3 years experience
             </h1>
             <h1 className="text-3xl md:text-5xl font-bold leading-tight text-gray-800 dark:text-white">
@@ -46,7 +46,6 @@ const MainBanner = () => {
                  bg-gray-200 dark:bg-neutral-700 dark:text-white
                  transition-all duration-300 group"
                   >
-                    {/* Fondo animado en hover */}
                     <span className="absolute inset-0 z-0 rounded-full scale-0 opacity-0
                        bg-gradient-to-tr from-white to-violet-600
                        dark:from-violet-600 dark:to-black
@@ -54,9 +53,7 @@ const MainBanner = () => {
                        group-hover:scale-100 group-hover:opacity-100">
                     </span>
 
-                    {/* Ícono siempre visible encima del fondo */}
-                    <span
-                        className="relative z-10 text-neutral-800 dark:text-white transition-all duration-300 group-hover:text-white">
+                    <span className="relative z-10 text-neutral-800 dark:text-white transition-all duration-300 group-hover:text-white">
                       <Icon/>
                     </span>
                   </a>
@@ -78,8 +75,7 @@ const MainBanner = () => {
                 src="/images/bairon.png"
                 width={400}
                 height={400}
-                className="relative animate-floating"
-            />
+                className="relative animate-floating"/>
           </div>
         </div>
       </header>
