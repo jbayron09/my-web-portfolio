@@ -32,7 +32,7 @@ const MainNavbar = () => {
   return (
       <nav className="sticky top-0 left-0 w-full z-50 backdrop-blur-xl">
         <div className="container py-4 flex items-center gap-8 justify-between">
-          <span className="uppercase font-extrabold text-purple-500">
+          <span className="uppercase font-extrabold text-violet-500">
             Portfolio
           </span>
           <ul
