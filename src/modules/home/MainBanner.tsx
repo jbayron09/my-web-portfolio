@@ -24,7 +24,7 @@ const socials: Social[] = [
     href: 'https://wa.me/573053013836',
   },
 ]
-const roles = ['Software Developer', 'Full-Stack Engineer']; // Palabras que se animarán
+const roles = ['Software Developer', 'Full-Stack Engineer', 'Cloud Deployment'];
 
 const MainBanner = () => {
   const [text, setText] = useState('');
@@ -58,24 +58,30 @@ const MainBanner = () => {
         <div className="container grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <div className="text-center md:text-left">
             {/* +3 years experience */}
-            <h1 className="text-2xl md:text-2xl font-bold bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
+            <h1 className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
               +3 years experience
             </h1>
 
             {/* Hi, I'm Bairon Bermudez */}
-            <h1 className="text-3xl md:text-5xl font-bold leading-tight text-gray-800 dark:text-white">
+            <h1 className="text-3xl lg:text-5xl font-bold leading-tight text-gray-800 dark:text-white">
               Hi, I&#39;m{' '}
               <span className="text-purple-500">Bairon Bermudez</span>
             </h1>
 
             {/* Texto animado con degradado */}
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-white">
+            <h2 className="text-2xl lg:text-3xl font-semibold text-gray-800 dark:text-white">
               and I am{' '}
               <span className="bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
                 {text}
               </span>
               <span className="animate-blink">|</span>
             </h2>
+
+            {/* Introducción personal */}
+            <p className="mt-4 lg:text-lg text-gray-600 dark:text-gray-300 max-w-xl">
+              I am a passionate developer who thrives on creating modern and effective technological solutions.
+              I enjoy collaborating with clients to understand their needs and deliver scalable, high-quality applications.
+            </p>
 
             {/* Social Buttons */}
             <div className="mt-4 flex justify-center md:justify-start space-x-2">
@@ -118,9 +124,10 @@ const MainBanner = () => {
             <Image
                 alt="Bairon Bermudez"
                 src="/images/bairon.png"
-                width={500}
-                height={500}
-                className="relative animate-floating"
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="relative h-full w-auto object-cover duration-300"
             />
           </div>
         </div>
