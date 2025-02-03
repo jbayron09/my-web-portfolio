@@ -25,19 +25,20 @@ const items: Item[] = [
 ]
 
 
-const AboutMe = () => {
+const MyExperience = () => {
   return (
-      <section className="bg-banner bg-cover bg-center bg-fixed" id="about-me">
+      <section >
         <div
-            className={clsx([
-              'backdrop-blur-sm',
-              'bg-gradient-to-b from-neutral-50 via-neutral-50/70 to-neutral-50',
-              'dark:from-neutral-900 dark:via-neutral-900/60 dark:to-neutral-900',
-            ])}
+            className="backdrop-blur-sm bg-gradient-to-l from-[#f7ecff] via-[#e8d9ff]/70 to-[#ffffff]
+               dark:from-[#1a0026] dark:via-[#2a0135]/70 dark:to-[#04000c]"
         >
+          {/*<div*/}
+          {/*    className="backdrop-blur-sm bg-gradient-to-b from-[#f7ecff] via-[#e8d9ff]/70 to-[#ffffff]*/}
+          {/*     dark:from-[#1a0026] dark:via-[#2a0135]/70 dark:to-[#04000c]"*/}
+          {/*>*/}
           <div className="py-16 container">
             <h2 className="mb-12 text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white">
-              Acerca de mí
+              My experience
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
@@ -83,4 +84,4 @@ const AboutMe = () => {
   )
 }
 
-export default AboutMe
+export default MyExperience

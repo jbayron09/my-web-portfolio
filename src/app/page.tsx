@@ -1,11 +1,13 @@
 import MainBanner from '@/modules/home/MainBanner'
-import AboutMe from '@/modules/home/AboutMe'
+import MyExperience from '@/modules/home/MyExperience'
+import Projects from '@/modules/home/Projects'
 
 export default function Home() {
   return (
       <main>
         <MainBanner/>
-        <AboutMe/>
+        <MyExperience/>
+        <Projects/>
       </main>
   )
 }

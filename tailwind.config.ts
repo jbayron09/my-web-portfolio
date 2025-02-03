@@ -25,6 +25,9 @@ export default {
           100: "#000319",
         }
       },
+      backgroundImage: {
+        'banner': 'url("/images/banner.jpg")',
+      },
       animation: {
         'floating': 'floating 3s ease-in-out infinite',
       },
