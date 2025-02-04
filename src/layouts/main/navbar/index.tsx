@@ -1,25 +1,53 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { IoMdClose, IoMdMenu } from 'react-icons/io'
 
 interface Section {
   name: string
   href: string
+  id: string
 }
 
 const sections: Section[] = [
-  { name: 'Home', href: '#home' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Skills', href: '#skills' },
+  { name: 'Home', href: '#home', id: 'home' },
+  { name: 'Experience', href: '#experience', id: 'experience' },
+  { name: 'Projects', href: '#projects', id: 'projects' },
+  { name: 'Skills', href: '#skills', id: 'skills' },
 ]
 
 const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [activeSection, setActiveSection] = useState<string>('Home')
-  console.log(activeSection)
+  const [activeSection, setActiveSection] = useState<string>('home')
+
   const toggle = () => setIsOpen(!isOpen)
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.6, // Cambia la sección cuando el 60% está visible
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const newSection = sections.find(sec => sec.id === entry.target.id)
+          if (newSection && newSection.name !== activeSection) {
+            setActiveSection(newSection.name)
+            window.history.replaceState(null, '', newSection.href) // Actualiza la URL sin recargar
+          }
+        }
+      })
+    }, observerOptions)
+
+    sections.forEach(({ id }) => {
+      const sectionElement = document.getElementById(id)
+      if (sectionElement) observer.observe(sectionElement)
+    })
+
+    return () => observer.disconnect() // Limpia el observer al desmontar
+  }, [activeSection])
 
   return (
       <nav className="sticky top-0 left-0 w-full z-50 backdrop-blur-xl">
@@ -46,6 +74,7 @@ const MainNavbar = () => {
                       ])}
                       onClick={() => {
                         setActiveSection(section.name)
+                        window.history.replaceState(null, '', section.href) // Cambia el hash al hacer clic
                         if (isOpen) toggle()
                       }}
                   >
