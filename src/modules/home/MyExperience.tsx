@@ -25,7 +25,7 @@ const items: Item[] = [
 
 const MyExperience = () => {
   return (
-      <section className="bg-banner bg-cover bg-center bg-fixed" id="about-me">
+      <section className="bg-banner bg-cover bg-center bg-fixed" id="experience">
         <div
             className="backdrop-blur-sm bg-gradient-to-r from-[#ffffff] via-[#f7ecff]/70 to-[#e8d9ff]
                dark:from-[#020024] dark:via-[#190b36]/70 dark:to-[#281649]"
