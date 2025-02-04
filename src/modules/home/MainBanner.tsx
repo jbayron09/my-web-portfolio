@@ -1,8 +1,9 @@
 'use client'
-import { useState, useEffect } from 'react';
-import type { IconType } from 'react-icons';
-import Image from 'next/image';
-import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { useState, useEffect } from 'react'
+import type { IconType } from 'react-icons'
+import Image from 'next/image'
+import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
+import { Spotlight } from '@/components/ui/Spotlight'
 
 interface Social {
   icon: IconType;
@@ -24,37 +25,40 @@ const socials: Social[] = [
     href: 'https://wa.me/573053013836',
   },
 ]
-const roles = ['Software Developer', 'Full-Stack Engineer', 'Cloud Deployment'];
+const roles = ['Software Developer', 'Full-Stack Engineer', 'Cloud Deployment']
 
 const MainBanner = () => {
-  const [text, setText] = useState('');
-  const [index, setIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [text, setText] = useState('')
+  const [index, setIndex] = useState(0)
+  const [subIndex, setSubIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
-    const currentWord = roles[index];
+    const currentWord = roles[index]
 
     if (isDeleting) {
       if (subIndex === 0) {
-        setIsDeleting(false);
-        setIndex((prev) => (prev + 1) % roles.length); // Cambia al siguiente texto
+        setIsDeleting(false)
+        setIndex((prev) => (prev + 1) % roles.length) // Cambia al siguiente texto
       } else {
-        setTimeout(() => setSubIndex((prev) => prev - 1), 50); // Velocidad de borrado
+        setTimeout(() => setSubIndex((prev) => prev - 1), 50) // Velocidad de borrado
       }
     } else {
       if (subIndex === currentWord.length) {
-        setTimeout(() => setIsDeleting(true), 1000); // Espera antes de borrar
+        setTimeout(() => setIsDeleting(true), 1000) // Espera antes de borrar
       } else {
-        setTimeout(() => setSubIndex((prev) => prev + 1), 100); // Velocidad de escritura
+        setTimeout(() => setSubIndex((prev) => prev + 1), 100) // Velocidad de escritura
       }
     }
 
-    setText(currentWord.substring(0, subIndex));
-  }, [subIndex, index, isDeleting]);
+    setText(currentWord.substring(0, subIndex))
+  }, [subIndex, index, isDeleting])
 
   return (
-      <header id="home" className="h-screen flex flex-col justify-center">
+      <header id="home" className="h-screen flex flex-col justify-center bg-light-gradient dark:bg-dark-gradient">
+        <Spotlight className="-top-40 -left-10 md:-top-20 md:-left-32 h-screen"/>
+        <Spotlight className="top-10 left-full h-[80vh] w-[50vw]" fill="purple"/>
+        <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="blue"/>
         <div className="container grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <div className="text-center md:text-left">
             {/* +3 years experience */}
@@ -68,19 +72,20 @@ const MainBanner = () => {
               <span className="text-purple-500">Bairon Bermudez</span>
             </h1>
 
-            {/* Texto animado con degradado */}
-            <h2 className="text-2xl lg:text-3xl font-semibold text-gray-800 dark:text-white">
-              and I am{' '}
-              <span className="bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
-                {text}
-              </span>
-              <span className="animate-blink">|</span>
-            </h2>
+            {/*/!* Texto animado con degradado *!/*/}
+            {/*<h2 className="text-2xl lg:text-3xl font-semibold text-gray-800 dark:text-white">*/}
+            {/*  and I am{' '}*/}
+            {/*  <span className="bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">*/}
+            {/*    {text}*/}
+            {/*  </span>*/}
+            {/*  <span className="animate-blink">|</span>*/}
+            {/*</h2>*/}
 
             {/* Introducción personal */}
             <p className="mt-4 lg:text-lg text-gray-600 dark:text-gray-300 max-w-xl">
               I am a passionate developer who thrives on creating modern and effective technological solutions.
-              I enjoy collaborating with clients to understand their needs and deliver scalable, high-quality applications.
+              I enjoy collaborating with clients to understand their needs and deliver scalable, high-quality
+              applications.
             </p>
 
             {/* Social Buttons */}
@@ -101,8 +106,9 @@ const MainBanner = () => {
                        group-hover:scale-100 group-hover:opacity-100">
                     </span>
 
-                    <span className="relative z-10 text-neutral-800 dark:text-white transition-all duration-300 group-hover:text-white">
-                      <Icon />
+                    <span
+                        className="relative z-10 text-neutral-800 dark:text-white transition-all duration-300 group-hover:text-white">
+                      <Icon/>
                     </span>
                   </a>
               ))}
@@ -120,7 +126,7 @@ const MainBanner = () => {
 
           {/* Imagen */}
           <div className="relative flex justify-center md:justify-end">
-            <div className="absolute aspect-square h-full rounded-full bg-purple-500 blur-3xl opacity-20" />
+            <div className="absolute aspect-square h-full rounded-full bg-purple-500 blur-3xl opacity-20"/>
             <Image
                 alt="Bairon Bermudez"
                 src="/images/bairon.png"
@@ -133,7 +139,7 @@ const MainBanner = () => {
           </div>
         </div>
       </header>
-  );
-};
+  )
+}
 
-export default MainBanner;
+export default MainBanner

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+@layer components {
     * {
         margin: 0;
         padding: 0;
@@ -16,15 +16,27 @@
     body {
         max-width: 100%;
         overflow-x: hidden;
+        @apply text-neutral-600 dark:text-neutral-100
     }
 
     /* 🌑 Modo oscuro */
     .dark body {
-        background: linear-gradient(90deg, #020024 20%, #190b36 70%, #281649);
+        background: #190b36
     }
 
     /* ☀️ Modo claro */
     body {
+        background: #f7ecff
+    }
+
+    .bg-light-gradient {
         background: linear-gradient(90deg, #ffffff, #f7ecff, #e8d9ff);
     }
+
+    .bg-dark-gradient {
+        background: linear-gradient(90deg, #020024 20%, #190b36 70%, #281649);
+    }
 }
+
+
+

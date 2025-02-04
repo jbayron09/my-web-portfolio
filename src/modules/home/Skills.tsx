@@ -19,7 +19,7 @@ const skills = [
 
 const Skills = () => {
   return (
-      <section id="skills" className="py-16">
+      <section id="skills" className="py-16 bg-light-gradient dark:bg-dark-gradient">
         <div className="container">
           <h2 className="mb-12 text-3xl md:text-4xl font-bold text-center text-neutral-800 dark:text-white">
             Skills

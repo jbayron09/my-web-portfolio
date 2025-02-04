@@ -50,7 +50,7 @@ const MainNavbar = () => {
   }, [activeSection])
 
   return (
-      <nav className="sticky top-0 left-0 w-full z-50 backdrop-blur-xl">
+      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl">
         <div className="container py-4 flex items-center gap-8 justify-between">
           <h1 className="uppercase text-xl lg:text-2xl font-bold bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
             Portfolio

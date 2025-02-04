@@ -21,11 +21,38 @@ const projects = [
     link: 'https://no-violence-forum.vercel.app/',
     repositoryLink: 'https://github.com/JatsukinG',
   },
+  {
+    id: 3,
+    title: 'Auto-parts E-Commerce',
+    description: 'Ecommerce for Auto parts shop',
+    tags: ['React.js', 'Typescript', 'TailwindCSS', 'Django'],
+    image: '/images/projects/ecommerce.jpg',
+    link: 'https://marketplace.tallerpremium.net',
+    repositoryLink: 'https://github.com/JatsukinG',
+  },
+  {
+    id: 4,
+    title: 'No violence forum - Landing',
+    description: 'Landing page to university annual event',
+    tags: ['Next.js', 'Sass'],
+    image: '/images/projects/no-violence-forum.jpg',
+    link: 'https://no-violence-forum.vercel.app/',
+    repositoryLink: 'https://github.com/JatsukinG',
+  },
+  {
+    id: 5,
+    title: 'Auto-parts E-Commerce',
+    description: 'Ecommerce for Auto parts shop',
+    tags: ['React.js', 'Typescript', 'TailwindCSS', 'Django'],
+    image: '/images/projects/ecommerce.jpg',
+    link: 'https://marketplace.tallerpremium.net',
+    repositoryLink: 'https://github.com/JatsukinG',
+  },
 ]
 
 const Projects = () => {
   return (
-      <section id="projects" className="py-16">
+      <section id="projects" className="py-16 bg-light-gradient dark:bg-dark-gradient">
         <div className="container">
           <h2 className="mb-12 text-3xl md:text-4xl font-bold text-center text-neutral-800 dark:text-white">
             Projects
