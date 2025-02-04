@@ -32,7 +32,6 @@ const projects = [
   },
 ]
 
-
 const Projects = () => {
   return (
       <section id="projects" className="py-16">

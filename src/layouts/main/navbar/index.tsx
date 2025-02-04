@@ -13,14 +13,14 @@ const sections: Section[] = [
     name: 'Home',
     href: '#home',
   }, {
-    name: 'About me',
+    name: 'Experience',
     href: '#about-me',
-  }, {
-    name: 'Skills',
-    href: '#skills',
   }, {
     name: 'Projects',
     href: '#projects',
+  }, {
+    name: 'Skills',
+    href: '#skills',
   },
 ]
 
@@ -49,8 +49,8 @@ const MainNavbar = () => {
                     <a
                         href={section.href}
                         className={clsx([
-                          'w-full font-semibold text-sm p-4 text-center duration-300',
-                          'md:p-0 hover:text-purple-500 active:text-purple-400',
+                          'w-full font-bold text-sm p-4 text-center duration-300 dark:text-neutral-100',
+                          'md:p-0 hover:text-violet-500 dark:hover:text-violet-500 active:text-purple-400',
                         ])}
                         onClick={() => isOpen && toggle()}
                     >
@@ -60,7 +60,7 @@ const MainNavbar = () => {
               ))
             }
           </ul>
-          <div className="flex items-center gap-2">
+          <div className="max-md:flex items-center gap-2 hidden">
             <button
                 className={clsx([
                   isOpen && 'text-purple-500',

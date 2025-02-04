@@ -1,5 +1,3 @@
-import clsx from 'clsx'
-
 interface Item {
   year: number;
   title: string;
@@ -27,18 +25,14 @@ const items: Item[] = [
 
 const MyExperience = () => {
   return (
-      <section >
+      <section className="bg-banner bg-cover bg-center bg-fixed" id="about-me">
         <div
-            className="backdrop-blur-sm bg-gradient-to-l from-[#f7ecff] via-[#e8d9ff]/70 to-[#ffffff]
-               dark:from-[#1a0026] dark:via-[#2a0135]/70 dark:to-[#04000c]"
+            className="backdrop-blur-sm bg-gradient-to-r from-[#ffffff] via-[#f7ecff]/70 to-[#e8d9ff]
+               dark:from-[#020024] dark:via-[#190b36]/70 dark:to-[#281649]"
         >
-          {/*<div*/}
-          {/*    className="backdrop-blur-sm bg-gradient-to-b from-[#f7ecff] via-[#e8d9ff]/70 to-[#ffffff]*/}
-          {/*     dark:from-[#1a0026] dark:via-[#2a0135]/70 dark:to-[#04000c]"*/}
-          {/*>*/}
           <div className="py-16 container">
             <h2 className="mb-12 text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white">
-              My experience
+              Work experience
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8">

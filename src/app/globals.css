@@ -20,7 +20,7 @@
 
     /* 🌑 Modo oscuro */
     .dark body {
-        background: linear-gradient(90deg, #04000c, #1a0026, #2a0135);
+        background: linear-gradient(90deg, #020024 20%, #190b36 70%, #281649);
     }
 
     /* ☀️ Modo claro */
