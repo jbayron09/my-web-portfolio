@@ -21,15 +21,6 @@ const projects = [
     link: 'https://no-violence-forum.vercel.app/',
     repositoryLink: 'https://github.com/JatsukinG',
   },
-  {
-    id: 3,
-    title: '4 images 1 word game',
-    description: 'Game to write a word based in four images',
-    tags: ['React.js', 'TailwindCss'],
-    image: '/images/projects/4images1word.jpg',
-    link: 'https://4images1word.vercel.app',
-    repositoryLink: 'https://github.com/JatsukinG',
-  },
 ]
 
 const Projects = () => {
