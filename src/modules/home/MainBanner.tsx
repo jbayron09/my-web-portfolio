@@ -32,7 +32,6 @@ const MainBanner = () => {
   const [index, setIndex] = useState(0)
   const [subIndex, setSubIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
-  const { isDarkMode } = useTheme()
 
   useEffect(() => {
     const currentWord = roles[index]
