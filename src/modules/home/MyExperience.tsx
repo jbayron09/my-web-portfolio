@@ -1,8 +1,8 @@
 'use client'
 import 'react-vertical-timeline-component/style.min.css'
-// import { motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { VerticalTimeline } from 'react-vertical-timeline-component'
-// import { textVariant } from '@/utils/motion'
+import { textVariant } from '@/utils/motion'
 import { useTheme } from '@/context/ThemeProvider'
 import ExperienceCard from '@/modules/home/components/ExperienceCard'
 import type { IconType } from 'react-icons'
@@ -96,17 +96,14 @@ const MyExperience = () => {
   return (
       <section id="experience">
         <div className="py-16 container">
-          {/*<motion.h2*/}
-          {/*    variants={textVariant(0.2)}*/}
-          {/*    initial="hidden"*/}
-          {/*    whileInView="show"*/}
-          {/*    viewport={{ once: false, amount: 0.3 }}*/}
-          {/*    className="mb-12 text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white">*/}
-          {/*  Work Experience*/}
-          {/*</motion.h2>*/}
-          <h2 className="mb-12 text-3xl md:text-4xl font-bold text-center text-neutral-800 dark:text-white">
+          <motion.h2
+              variants={textVariant(0.2)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false, amount: 0.3 }}
+              className="mb-12 text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white">
             Work Experience
-          </h2>
+          </motion.h2>
 
           <div className="mt-20 flex flex-col">
             <VerticalTimeline

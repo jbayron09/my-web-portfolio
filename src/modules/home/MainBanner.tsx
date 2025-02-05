@@ -54,8 +54,7 @@ const MainBanner = () => {
   }, [subIndex, index, isDeleting])
 
   return (
-      <header id="home" className="min-h-screen flex items-center bg-light-gradient dark:bg-dark-gradient">
-      {/*<header id="home" className="py-16">*/}
+      <header id="home" className="py-16 sm:min-h-screen sm:flex sm:items-center bg-light-gradient dark:bg-dark-gradient">
         <div className="container grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <div className="text-center md:text-left">
             {/* +3 years experience */}
