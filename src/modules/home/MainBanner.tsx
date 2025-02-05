@@ -130,7 +130,7 @@ const MainBanner = () => {
                 width={0}
                 height={0}
                 sizes="100vw"
-                className="relative max-sm:h-80 h-full w-auto animate-floating"
+                className="relative h-full w-auto animate-floating"
                 priority
             />
           </div>
