@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
-import MainNavbar from '@/layouts/main/navbar'
 import DarkModeToggleBtn from '@/layouts/main/navbar/DarkModeToggleBtn'
 import { ThemeProvider } from '@/context/ThemeProvider'
 
@@ -18,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Bairon\'s Portfolio',
   description: 'Modern & Minimalist Portfolio',
+  icons: {
+    icon: "/icon.jpg",
+  },
 }
 
 export default function RootLayout({
@@ -31,7 +33,6 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
       <ThemeProvider>
-        <MainNavbar/>
         <DarkModeToggleBtn/>
         {children}
       </ThemeProvider>

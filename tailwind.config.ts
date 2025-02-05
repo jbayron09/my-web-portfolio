@@ -20,7 +20,7 @@ export default {
         foreground: "var(--foreground)",
       },
       backgroundImage: {
-        banner: "url('/images/banner2.jpg')",
+        banner: "url('/images/banner.jpg')",
       },
       animation: {
         floating: "floating 3s ease-in-out infinite",
