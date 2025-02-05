@@ -4,6 +4,7 @@ import type { IconType } from 'react-icons'
 import Image from 'next/image'
 import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
 import { Spotlight } from '@/components/ui/Spotlight'
+import { TextGenerateEffect } from '@/components/ui/TextGenerateEffect'
 
 interface Social {
   icon: IconType;
@@ -56,9 +57,12 @@ const MainBanner = () => {
 
   return (
       <header id="home" className="h-screen flex flex-col justify-center bg-light-gradient dark:bg-dark-gradient">
-        <Spotlight className="-top-40 -left-10 md:-top-20 md:-left-32 h-screen"/>
-        <Spotlight className="top-10 left-full h-[80vh] w-[50vw]" fill="purple"/>
-        <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="blue"/>
+        <div>
+          <Spotlight className="-top-40 -left-10 md:-top-20 md:-left-32 h-screen"/>
+          <Spotlight className="top-10 left-full h-[80vh] w-[50vw]" fill="purple"/>
+          <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="blue"/>
+        </div>
+
         <div className="container grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <div className="text-center md:text-left">
             {/* +3 years experience */}
@@ -72,21 +76,22 @@ const MainBanner = () => {
               <span className="text-purple-500">Bairon Bermudez</span>
             </h1>
 
-            {/*/!* Texto animado con degradado *!/*/}
-            {/*<h2 className="text-2xl lg:text-3xl font-semibold text-gray-800 dark:text-white">*/}
-            {/*  and I am{' '}*/}
-            {/*  <span className="bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">*/}
-            {/*    {text}*/}
-            {/*  </span>*/}
-            {/*  <span className="animate-blink">|</span>*/}
-            {/*</h2>*/}
+            {/* Texto animado con degradado */}
+            <h2 className="text-2xl lg:text-3xl font-semibold text-gray-800 dark:text-white">
+              and I am{' '}
+              <span className="bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
+                {text}
+              </span>
+              <span className="animate-blink">|</span>
+            </h2>
 
             {/* Introducción personal */}
-            <p className="mt-4 lg:text-lg text-gray-600 dark:text-gray-300 max-w-xl">
-              I am a passionate developer who thrives on creating modern and effective technological solutions.
+            <TextGenerateEffect
+                className="lg:text-lg max-w-xl"
+                duration={1}
+                words="I am a passionate developer who thrives on creating modern and effective technological solutions.
               I enjoy collaborating with clients to understand their needs and deliver scalable, high-quality
-              applications.
-            </p>
+              applications."/>
 
             {/* Social Buttons */}
             <div className="mt-4 flex justify-center md:justify-start space-x-2">
