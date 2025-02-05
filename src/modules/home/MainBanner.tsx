@@ -3,7 +3,6 @@ import type { IconType } from 'react-icons'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
-import { useTheme } from '@/context/ThemeProvider'
 
 interface Social {
   icon: IconType;
