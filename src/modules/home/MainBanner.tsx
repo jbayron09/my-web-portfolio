@@ -4,8 +4,6 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
 import { useTheme } from '@/context/ThemeProvider'
-import { Spotlight } from '@/components/ui/Spotlight'
-import { TextGenerateEffect } from '@/components/ui/TextGenerateEffect'
 
 interface Social {
   icon: IconType;
@@ -59,10 +57,6 @@ const MainBanner = () => {
 
   return (
       <header id="home" className="h-screen flex flex-col justify-center bg-light-gradient dark:bg-dark-gradient">
-        {
-            isDarkMode &&
-            <Spotlight className="-top-40 -left-10 md:-top-20 md:-left-32 h-screen"/>
-        }
         <div className="max-sm:mt-36 container grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <div className="text-center md:text-left">
             {/* +3 years experience */}
@@ -87,12 +81,11 @@ const MainBanner = () => {
             </h2>
 
             {/* Introducción personal */}
-            <TextGenerateEffect
-                className="lg:text-lg max-w-xl"
-                duration={1}
-                words="I am a passionate developer who thrives on creating modern and effective technological solutions.
+            <p className="mt-4 text-gray-600 dark:text-gray-300 lg:text-lg max-w-xl">
+              I am a passionate developer who thrives on creating modern and effective technological solutions.
               I enjoy collaborating with clients to understand their needs and deliver scalable, high-quality
-              applications."/>
+              applications.
+            </p>
 
             {/* Social Buttons */}
             <div className="mt-4 flex justify-center md:justify-start space-x-2">
@@ -139,7 +132,7 @@ const MainBanner = () => {
                 width={0}
                 height={0}
                 sizes="100vw"
-                className="relative h-full w-auto animate-floating"
+                className="relative max-sm:h-80 h-full w-auto animate-floating"
                 priority
             />
           </div>

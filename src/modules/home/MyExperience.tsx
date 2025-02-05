@@ -2,7 +2,7 @@
 import 'react-vertical-timeline-component/style.min.css'
 import { motion } from 'framer-motion'
 import { VerticalTimeline } from 'react-vertical-timeline-component'
-import { textVariant } from '@/lib/motion'
+import { textVariant } from '@/utils/motion'
 import { useTheme } from '@/context/ThemeProvider'
 import ExperienceCard from '@/modules/home/components/ExperienceCard'
 import type { IconType } from 'react-icons'
