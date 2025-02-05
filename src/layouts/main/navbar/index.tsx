@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { motion, useAnimation } from 'framer-motion'
 import clsx from 'clsx'
 import { IoMdClose, IoMdMenu } from 'react-icons/io'
 
@@ -17,17 +18,30 @@ const sections: Section[] = [
 ]
 
 const MainNavbar = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [activeSection, setActiveSection] = useState<string>('home')
+  const [isOpen, setIsOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
+  const [scrolled, setScrolled] = useState(false)
+  const controls = useAnimation()
 
   const toggle = () => setIsOpen(!isOpen)
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.6, // Cambia la sección cuando el 60% está visible
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true)
+        controls.start({ height: '60px', padding: '10px 0', backdropFilter: 'blur(10px)' })
+      } else {
+        setScrolled(false)
+        controls.start({ height: '80px', padding: '20px 0', backdropFilter: 'blur(0px)' })
+      }
     }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [controls])
+
+  useEffect(() => {
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.3 }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -35,7 +49,7 @@ const MainNavbar = () => {
           const newSection = sections.find(sec => sec.id === entry.target.id)
           if (newSection && newSection.name !== activeSection) {
             setActiveSection(newSection.name)
-            window.history.replaceState(null, '', newSection.href) // Actualiza la URL sin recargar
+            window.history.replaceState(null, '', newSection.href)
           }
         }
       })
@@ -46,12 +60,20 @@ const MainNavbar = () => {
       if (sectionElement) observer.observe(sectionElement)
     })
 
-    return () => observer.disconnect() // Limpia el observer al desmontar
+    return () => observer.disconnect()
   }, [activeSection])
 
   return (
-      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl">
-        <div className="container py-4 flex items-center gap-8 justify-between">
+      <motion.nav
+          initial={{ height: '80px', padding: '20px 0', backdropFilter: 'blur(0px)' }}
+          animate={controls}
+          transition={{ duration: 0.1 }}
+          className={clsx([
+            'fixed top-0 left-0 w-full z-50 transition-all duration-200',
+            scrolled && 'backdrop-blur-xl bg-white/50 dark:bg-black/50 shadow-md',
+          ])}
+      >
+        <div className="container flex items-center gap-8 justify-between">
           <h1 className="uppercase text-xl lg:text-2xl font-bold bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
             Portfolio
           </h1>
@@ -74,7 +96,7 @@ const MainNavbar = () => {
                       ])}
                       onClick={() => {
                         setActiveSection(section.name)
-                        window.history.replaceState(null, '', section.href) // Cambia el hash al hacer clic
+                        window.history.replaceState(null, '', section.href)
                         if (isOpen) toggle()
                       }}
                   >
@@ -91,11 +113,11 @@ const MainNavbar = () => {
                 ])}
                 onClick={() => toggle()}
             >
-              {isOpen ? <IoMdClose/> : <IoMdMenu/>}
+              {isOpen ? <IoMdClose /> : <IoMdMenu />}
             </button>
           </div>
         </div>
-      </nav>
+      </motion.nav>
   )
 }
 

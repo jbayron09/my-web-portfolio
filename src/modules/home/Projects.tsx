@@ -3,13 +3,22 @@ import Image from 'next/image'
 import { FaGithub } from 'react-icons/fa'
 import ProjectCard from '@/modules/home/components/ProjectCard'
 
+export type Project = {
+  title: string
+  description: string
+  image: string
+  tags: string[]
+  repositoryLink: string
+  link: string
+}
+
 const projects = [
   {
     id: 1,
     title: 'Auto-parts E-Commerce',
     description: 'Ecommerce for Auto parts shop',
-    tags: ['React.js', 'Typescript', 'TailwindCSS', 'Django'],
-    image: '/images/projects/ecommerce.jpg',
+    tags: ['Node.js', 'React.js', 'TypeScript', 'TailwindCSS', 'Django'],
+    image: '/images/projects/marketplace.png',
     link: 'https://marketplace.tallerpremium.net',
     repositoryLink: 'https://github.com/JatsukinG',
   },
@@ -26,7 +35,7 @@ const projects = [
     id: 3,
     title: 'Auto-parts E-Commerce',
     description: 'Ecommerce for Auto parts shop',
-    tags: ['React.js', 'Typescript', 'TailwindCSS', 'Django'],
+    tags: ['React.js', 'TypeScript', 'TailwindCSS', 'Django'],
     image: '/images/projects/ecommerce.jpg',
     link: 'https://marketplace.tallerpremium.net',
     repositoryLink: 'https://github.com/JatsukinG',
@@ -62,11 +71,13 @@ const Projects = () => {
               Projects
             </h2>
             <div className="m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-md:max-w-xs">
-              <ProjectCard
-                  title="BUSINESS"
-                  description="The Role Of Technology In Modern..."
-                  image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-I0cFwvofRwICGqchZ097BEcn5lKV9e.png"
-              />
+              {projects.map((project) => (
+                  <ProjectCard
+                      key={project.id}
+                      project={project}
+                  />
+
+              ))}
               {projects.map((project) => (
                   <div
                       key={project.id}
