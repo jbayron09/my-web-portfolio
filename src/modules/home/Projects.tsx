@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import Image from 'next/image'
 import { FaGithub } from 'react-icons/fa'
+import ProjectCard from '@/modules/home/components/ProjectCard'
 
 const projects = [
   {
@@ -61,6 +62,11 @@ const Projects = () => {
               Projects
             </h2>
             <div className="m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-md:max-w-xs">
+              <ProjectCard
+                  title="BUSINESS"
+                  description="The Role Of Technology In Modern..."
+                  image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-I0cFwvofRwICGqchZ097BEcn5lKV9e.png"
+              />
               {projects.map((project) => (
                   <div
                       key={project.id}
