@@ -1,8 +1,9 @@
 'use client'
-import { useState, useEffect } from 'react'
 import type { IconType } from 'react-icons'
 import Image from 'next/image'
+import { useState, useEffect } from 'react'
 import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
+import { useTheme } from '@/context/ThemeProvider'
 import { Spotlight } from '@/components/ui/Spotlight'
 import { TextGenerateEffect } from '@/components/ui/TextGenerateEffect'
 
@@ -33,6 +34,7 @@ const MainBanner = () => {
   const [index, setIndex] = useState(0)
   const [subIndex, setSubIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
+  const { isDarkMode } = useTheme()
 
   useEffect(() => {
     const currentWord = roles[index]
@@ -57,11 +59,10 @@ const MainBanner = () => {
 
   return (
       <header id="home" className="h-screen flex flex-col justify-center bg-light-gradient dark:bg-dark-gradient">
-        <div>
-          <Spotlight className="-top-40 -left-10 md:-top-20 md:-left-32 h-screen"/>
-          <Spotlight className="top-10 left-full h-[80vh] w-[50vw]" fill="purple"/>
-          <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="blue"/>
-        </div>
+        {
+            isDarkMode &&
+            <Spotlight className="-top-40 -left-10 md:-top-20 md:-left-32 h-screen"/>
+        }
 
         <div className="container grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <div className="text-center md:text-left">
@@ -79,7 +80,8 @@ const MainBanner = () => {
             {/* Texto animado con degradado */}
             <h2 className="text-2xl lg:text-3xl font-semibold text-gray-800 dark:text-white">
               and I am{' '}
-              <span className="bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
+              <span
+                  className="bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
                 {text}
               </span>
               <span className="animate-blink">|</span>
