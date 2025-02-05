@@ -95,30 +95,28 @@ const MyExperience = () => {
 
   return (
       <section id="experience">
-        <div className="bg-light-gradient dark:bg-dark-gradient">
-          <div className="py-16 container">
-            <motion.h2
-                variants={textVariant(0.2)}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: false, amount: 0.3 }}
-                className="mb-12 text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white">
-              Work Experience
-            </motion.h2>
+        <div className="py-16 container">
+          <motion.h2
+              variants={textVariant(0.2)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false, amount: 0.3 }}
+              className="mb-12 text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white">
+            Work Experience
+          </motion.h2>
 
-            <div className="mt-20 flex flex-col">
-              <VerticalTimeline
-                  animate={true}
-                  lineColor={isDarkMode ? '#e8d9ff' : '#8B5CF6'} // 🔥 Cambia color de la línea en Dark Mode
-              >
-                {experiences.map((experience, index) => (
-                    <ExperienceCard
-                        key={`experience-${index}`}
-                        experience={experience}
-                    />
-                ))}
-              </VerticalTimeline>
-            </div>
+          <div className="mt-20 flex flex-col">
+            <VerticalTimeline
+                animate={true}
+                lineColor={isDarkMode ? '#e8d9ff' : '#8B5CF6'} // 🔥 Cambia color de la línea en Dark Mode
+            >
+              {experiences.map((experience, index) => (
+                  <ExperienceCard
+                      key={`experience-${index}`}
+                      experience={experience}
+                  />
+              ))}
+            </VerticalTimeline>
           </div>
         </div>
       </section>

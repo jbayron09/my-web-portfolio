@@ -63,7 +63,6 @@ const MainBanner = () => {
             isDarkMode &&
             <Spotlight className="-top-40 -left-10 md:-top-20 md:-left-32 h-screen"/>
         }
-
         <div className="max-sm:mt-36 container grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <div className="text-center md:text-left">
             {/* +3 years experience */}
