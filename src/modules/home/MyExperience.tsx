@@ -100,7 +100,7 @@ const MyExperience = () => {
               variants={textVariant(0.2)}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
               className="mb-12 text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white">
             Work Experience
           </motion.h2>

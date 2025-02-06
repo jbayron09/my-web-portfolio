@@ -71,6 +71,7 @@ const MainNavbar = () => {
           className={clsx([
             'fixed top-0 left-0 w-full z-50 transition-all duration-200',
             scrolled && 'backdrop-blur-xl bg-white/50 dark:bg-black/50 shadow-md',
+            isOpen && 'backdrop-blur-xl bg-white/50 dark:bg-black/50 shadow-md',
           ])}
       >
         <div className="container flex items-center gap-8 justify-between">
@@ -81,8 +82,8 @@ const MainNavbar = () => {
               className={clsx([
                 isOpen ? 'max-md:block' : 'max-md:hidden',
                 'list-none flex flex-col items-center max-md:backdrop-blur-xl',
-                'md:flex-row md:gap-8',
-                'max-md:absolute max-md:top-full max-md:left-0 max-md:w-full max-md:bg-neutral-50/70 max-md:dark:bg-neutral-900',
+                'md:flex-row md:gap-8 z-20',
+                'max-md:absolute max-md:top-full max-md:left-0 max-md:w-full max-md:bg-neutral-50 max-md:dark:bg-neutral-900',
               ])}
           >
             {sections.map(section => (

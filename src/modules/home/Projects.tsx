@@ -59,7 +59,7 @@ const projects = [
 
 const Projects = () => {
   return (
-      <section id="skills">
+      <section id="projects">
         <div className="py-16 container">
           <h2 className="mb-12 text-3xl md:text-4xl font-bold text-center text-neutral-800 dark:text-white">
             Projects
