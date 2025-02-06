@@ -1,5 +1,4 @@
 'use client'
-import { motion } from 'framer-motion'
 import { FaCss3Alt, FaGitAlt, FaHtml5, FaJs, FaPython, FaReact } from 'react-icons/fa'
 import { SiAstro, SiDjango, SiGraphql, SiNextdotjs, SiTailwindcss, SiTypescript } from 'react-icons/si'
 
@@ -19,12 +18,6 @@ const skills = [
   { name: 'Astro', icon: SiAstro },
 ]
 
-// Configuración de animaciones
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } },
-}
-
 const Skills = () => {
   return (
       <section id="skills" className="py-16">
@@ -38,35 +31,23 @@ const Skills = () => {
             {skills.map((skill, index) => {
               const Icon = skill.icon
               return (
-                  <motion.div
+                  <div
                       key={index}
-                      variants={cardVariants}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: false, amount: 0.3 }}
-                      whileHover={{ scale: 1.05 }}
                       className="relative flex flex-col items-center justify-center bg-white shadow-lg rounded-2xl p-6 overflow-hidden
-                          dark:bg-neutral-900 transition-all duration-300 ease-in-out group border border-gray-200 dark:border-gray-800"
+                          dark:bg-neutral-900 transition-all duration-300 ease-in-out group border border-gray-200 dark:border-gray-800
+                          hover:shadow-xl hover:scale-105"
                   >
-                    {/* 🔥 Borde animado con Framer Motion */}
-                    <motion.div
-                        className="absolute inset-0 rounded-2xl border-2 border-transparent"
-                        initial={{ width: "0%", height: "0%" }}
-                        whileHover={{ width: "100%", height: "100%", borderColor: "#8B5CF6" }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                    />
+                    {/* 🔥 Borde animado con Tailwind */}
+                    <div className="absolute inset-0 border-2 border-transparent rounded-2xl group-hover:border-purple-500 transition-all duration-500" />
 
-                    {/* 🔥 Icono con animación en eje Y al hacer hover en la card */}
-                    <motion.div
-                        className="group-hover:rotate-y-180 transition-transform duration-500"
-                        style={{ transformStyle: "preserve-3d" }}
-                    >
-                      <Icon className="text-5xl text-purple-500 mb-2" />
-                    </motion.div>
+                    {/* 🔥 Icono con animación en el eje Y */}
+                    <div className="text-5xl text-purple-500 mb-2 transition-transform duration-500 rotate-x-180">
+                      <Icon />
+                    </div>
 
                     {/* Nombre de la Skill */}
                     <p className="text-neutral-800 dark:text-neutral-200 font-semibold text-lg">{skill.name}</p>
-                  </motion.div>
+                  </div>
               )
             })}
           </div>
