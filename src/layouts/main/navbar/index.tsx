@@ -1,8 +1,9 @@
 'use client'
-import { useState, useEffect } from 'react'
-import { motion, useAnimation } from 'framer-motion'
+import { useState } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import clsx from 'clsx'
 import { IoMdClose, IoMdMenu } from 'react-icons/io'
+import { useTheme } from '@/context/ThemeProvider'
 
 interface Section {
   name: string
@@ -20,64 +21,58 @@ const sections: Section[] = [
 const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
-  const [scrolled, setScrolled] = useState(false)
-  const controls = useAnimation()
 
-  const toggle = () => setIsOpen(!isOpen)
+  const { scrollY } = useScroll()
+  const { isDarkMode } = useTheme()
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true)
-        controls.start({ height: '60px', padding: '10px 0', backdropFilter: 'blur(10px)' })
-      } else {
-        setScrolled(false)
-        controls.start({ height: '80px', padding: '20px 0', backdropFilter: 'blur(0px)' })
-      }
-    }
+  const height = useTransform(scrollY, [0, 50], ['80px', '60px'])
+  const padding = useTransform(scrollY, [0, 50], ['20px 0', '10px 0'])
+  const backdropBlur = useTransform(scrollY, [0, 50], ['blur(0px)', 'blur(10px)'])
+  const background = useTransform(
+      scrollY,
+      [0, 50],
+      ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.5)'],
+  )
+  const darkBackground = useTransform(
+      scrollY,
+      [0, 50],
+      ['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.5)'],
+  )
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [controls])
+  const shadow = useTransform(
+      scrollY,
+      [0, 100],
+      ['0px 0px 0px rgba(0,0,0,0)', '0px 4px 10px rgba(0,0,0,0.2)']
+  )
 
-  useEffect(() => {
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.3 }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const newSection = sections.find(sec => sec.id === entry.target.id)
-          if (newSection && newSection.name !== activeSection) {
-            setActiveSection(newSection.name)
-            window.history.replaceState(null, '', newSection.href)
-          }
-        }
-      })
-    }, observerOptions)
-
-    sections.forEach(({ id }) => {
-      const sectionElement = document.getElementById(id)
-      if (sectionElement) observer.observe(sectionElement)
-    })
-
-    return () => observer.disconnect()
-  }, [activeSection])
+  const darkShadow = useTransform(
+      scrollY,
+      [0, 100],
+      [
+        '0px 0px 0px rgba(255,255,255,0)',
+        '0px 4px 10px rgba(255,255,255,0.3)',
+      ]
+  )
 
   return (
       <motion.nav
-          initial={{ height: '80px', padding: '20px 0', backdropFilter: 'blur(0px)' }}
-          animate={controls}
-          transition={{ duration: 0.1 }}
+          style={{
+            height,
+            padding,
+            backdropFilter: backdropBlur,
+            background: isDarkMode ? darkBackground : background,
+            boxShadow: isDarkMode ? darkShadow : shadow,
+          }}
           className={clsx([
             'fixed top-0 left-0 w-full z-50 transition-all duration-200',
-            scrolled && 'backdrop-blur-xl bg-white/50 dark:bg-black/50 shadow-md',
-            isOpen && 'backdrop-blur-xl bg-white/50 dark:bg-black/50 shadow-md',
+            isOpen && '!bg-white/70 dark:!bg-black/70',
           ])}
       >
         <div className="container flex items-center gap-8 justify-between">
           <h1 className="uppercase text-xl lg:text-2xl font-bold bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
             Portfolio
           </h1>
+
           <ul
               className={clsx([
                 isOpen ? 'max-md:block' : 'max-md:hidden',
@@ -98,7 +93,7 @@ const MainNavbar = () => {
                       onClick={() => {
                         setActiveSection(section.name)
                         window.history.replaceState(null, '', section.href)
-                        if (isOpen) toggle()
+                        if (isOpen) setIsOpen(false)
                       }}
                   >
                     {section.name}
@@ -106,15 +101,16 @@ const MainNavbar = () => {
                 </li>
             ))}
           </ul>
+
           <div className="max-md:flex items-center gap-2 hidden">
             <button
                 className={clsx([
                   isOpen && 'text-purple-500',
                   'p-2 text-xl rounded-full duration-300 block md:hidden',
                 ])}
-                onClick={() => toggle()}
+                onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ? <IoMdClose /> : <IoMdMenu />}
+              {isOpen ? <IoMdClose/> : <IoMdMenu/>}
             </button>
           </div>
         </div>

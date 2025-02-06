@@ -55,7 +55,7 @@ const MainBanner = () => {
 
   return (
       <header id="home" className="py-16 sm:min-h-screen sm:flex sm:items-center bg-light-gradient dark:bg-dark-gradient">
-        <div className="container grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+        <div className="max-sm:py-16 container grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <div className="text-center md:text-left">
             {/* +3 years experience */}
             <h1 className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
