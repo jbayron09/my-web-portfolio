@@ -1,4 +1,7 @@
+'use client'
 import ProjectCard from '@/modules/home/components/ProjectCard'
+import { motion } from 'framer-motion'
+import { textVariant } from '@/utils/motion'
 
 export type Project = {
   title: string
@@ -61,16 +64,20 @@ const Projects = () => {
   return (
       <section id="projects">
         <div className="py-16 container">
-          <h2 className="mb-12 text-3xl md:text-4xl font-bold text-center text-neutral-800 dark:text-white">
+          <motion.h2
+              variants={textVariant(0.2)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              className="mb-12 text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white">
             Projects
-          </h2>
+          </motion.h2>
           <div className="m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-md:max-w-xs">
             {projects.map((project) => (
                 <ProjectCard
                     key={project.id}
                     project={project}
                 />
-
             ))}
           </div>
         </div>

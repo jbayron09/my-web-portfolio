@@ -1,6 +1,8 @@
 'use client'
 import { FaCss3Alt, FaGitAlt, FaHtml5, FaJs, FaPython, FaReact } from 'react-icons/fa'
 import { SiAstro, SiDjango, SiGraphql, SiNextdotjs, SiTailwindcss, SiTypescript } from 'react-icons/si'
+import { motion } from 'framer-motion'
+import { textVariant } from '@/utils/motion'
 
 // Lista de Skills con Iconos
 const skills = [
@@ -25,6 +27,14 @@ const Skills = () => {
           <h2 className="mb-12 text-3xl md:text-4xl font-bold text-center text-neutral-800 dark:text-white">
             Skills
           </h2>
+          <motion.h2
+              variants={textVariant(0.2)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              className="mb-12 text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white">
+            Projects
+          </motion.h2>
 
           {/* Contenedor de tarjetas */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-6">
