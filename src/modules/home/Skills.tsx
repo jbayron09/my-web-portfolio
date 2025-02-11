@@ -33,8 +33,8 @@ const Skills = () => {
               return (
                   <div
                       key={index}
-                      className="relative flex flex-col items-center justify-center bg-white shadow-lg rounded-2xl p-6 overflow-hidden
-                          dark:bg-neutral-900 transition-all duration-300 ease-in-out group border border-gray-200 dark:border-gray-800
+                      className="relative flex flex-col items-center justify-center bg-violet-50 dark:bg-violet-950 shadow-lg rounded-2xl p-6 overflow-hidden
+                          transition-all duration-300 ease-in-out group border border-gray-200 dark:border-gray-800
                           hover:shadow-xl hover:scale-105"
                   >
                     {/* 🔥 Borde animado con Tailwind */}
