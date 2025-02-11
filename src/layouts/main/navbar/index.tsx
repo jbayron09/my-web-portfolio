@@ -34,28 +34,34 @@ const MainNavbar = () => {
   const shadow = useTransform(scrollY, [0, 100], ['0px 0px 0px rgba(0,0,0,0)', '0px 4px 10px rgba(0,0,0,0.2)'])
   const darkShadow = useTransform(scrollY, [0, 100], ['0px 0px 0px rgba(255,255,255,0)', '0px 4px 10px rgba(255,255,255,0.3)'])
 
-  // Detección de sección activa con IntersectionObserver
   useEffect(() => {
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const newSection = sections.find(sec => sec.id === entry.target.id)
-          if (newSection) {
-            setActiveSection(newSection.name)
-            window.history.replaceState(null, '', newSection.href)
-          }
-        }
-      })
-    }, observerOptions)
-
     sections.forEach(({ id }) => {
       const sectionElement = document.getElementById(id)
-      if (sectionElement) observer.observe(sectionElement)
-    })
+      if (!sectionElement) return
 
-    return () => observer.disconnect()
+      // Aplica diferentes thresholds para Experience y las demás secciones
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: id === 'experience' ? 0.3 : 0.5, // Configuración dinámica
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const newSection = sections.find(sec => sec.id === entry.target.id)
+            if (newSection) {
+              setActiveSection(newSection.name)
+              window.history.replaceState(null, '', newSection.href)
+            }
+          }
+        })
+      }, observerOptions)
+
+      observer.observe(sectionElement) // Observa la sección
+
+      return () => observer.disconnect() // Limpia el observer cuando se desmonta el componente
+    })
   }, [])
 
   return (
