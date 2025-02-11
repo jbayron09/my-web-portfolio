@@ -24,16 +24,13 @@ const Skills = () => {
   return (
       <section id="skills" className="py-16">
         <div className="container">
-          <h2 className="mb-12 text-3xl md:text-4xl font-bold text-center text-neutral-800 dark:text-white">
-            Skills
-          </h2>
           <motion.h2
               variants={textVariant(0.2)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
               className="mb-12 text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white">
-            Projects
+            Skills
           </motion.h2>
 
           {/* Contenedor de tarjetas */}

@@ -1,28 +1,35 @@
-import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp, FaEnvelope, FaPhone } from 'react-icons/fa'
+'use client'
+import { FaEnvelope, FaPhone } from 'react-icons/fa'
+import { socials } from '@/constants/socialNetworks'
 
 const Footer = () => {
   return (
       <footer className="bg-light-gradient dark:bg-dark-gradient py-8 mt-16 border-t border-gray-300 dark:border-gray-700">
         <div className="container mx-auto px-6 md:px-12 flex flex-col items-center text-center">
-
           {/* Redes sociales */}
           <div className="flex space-x-4 mb-6">
-            <a href="https://github.com/jbayron09" target="_blank"
-               className="p-3 rounded-full bg-gray-300 dark:bg-neutral-700 hover:bg-violet-500 dark:hover:bg-violet-400 transition-all">
-              <FaGithub className="text-xl text-neutral-800 dark:text-white"/>
-            </a>
-            <a href="https://www.linkedin.com/in/jorge-bairon-bermudez-leon-6242b81b5" target="_blank"
-               className="p-3 rounded-full bg-gray-300 dark:bg-neutral-700 hover:bg-violet-500 dark:hover:bg-violet-400 transition-all">
-              <FaLinkedin className="text-xl text-neutral-800 dark:text-white"/>
-            </a>
-            <a href="https://www.instagram.com/jbayron09/" target="_blank"
-               className="p-3 rounded-full bg-gray-300 dark:bg-neutral-700 hover:bg-violet-500 dark:hover:bg-violet-400 transition-all">
-              <FaInstagram className="text-xl text-neutral-800 dark:text-white"/>
-            </a>
-            <a href="https://wa.me/573053013836" target="_blank"
-               className="p-3 rounded-full bg-gray-300 dark:bg-neutral-700 hover:bg-violet-500 dark:hover:bg-violet-400 transition-all">
-              <FaWhatsapp className="text-xl text-neutral-800 dark:text-white"/>
-            </a>
+            {socials.map(({ icon: Icon, href }, i) => (
+                <a
+                    key={i}
+                    href={href}
+                    target="_blank"
+                    className="relative p-3 rounded-full overflow-hidden
+                 bg-gray-200 dark:bg-neutral-700 dark:text-white
+                 transition-all duration-300 group"
+                >
+                  <span className="absolute inset-0 z-0 rounded-full scale-0 opacity-0
+                       bg-gradient-to-tr from-white to-violet-600
+                       dark:from-violet-600 dark:to-black
+                       transition-all duration-300 ease-out
+                       group-hover:scale-100 group-hover:opacity-100">
+                  </span>
+
+                  <span
+                      className="relative z-10 text-neutral-800 dark:text-white transition-all duration-300 group-hover:text-white">
+                    <Icon className='text-xl'/>
+                  </span>
+                </a>
+            ))}
           </div>
 
           {/* Información de contacto */}
