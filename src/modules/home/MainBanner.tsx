@@ -24,7 +24,16 @@ const socials: Social[] = [
     href: 'https://wa.me/573053013836',
   },
 ]
-const roles = ['Software Developer', 'Full-Stack Engineer', 'Cloud Deployment']
+
+const roles = [
+  'Software Engineer',
+  'Full-Stack Engineer',
+  'Frontend Developer',
+  'Backend Developer',
+  'DevOps Engineer',
+  'API Developer',
+  'Technical Mentor'
+]
 
 const MainBanner = () => {
   const [text, setText] = useState('')
@@ -54,11 +63,12 @@ const MainBanner = () => {
   }, [subIndex, index, isDeleting])
 
   return (
-      <header id="home" className="py-16 sm:min-h-screen sm:flex sm:items-center bg-light-gradient dark:bg-dark-gradient">
+      <header id="home"
+              className="py-16 sm:min-h-screen sm:flex sm:items-center bg-light-gradient dark:bg-dark-gradient">
         <div className="max-sm:py-16 container grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <div className="text-center md:text-left">
             {/* +3 years experience */}
-            <h1 className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
+            <h1 className="text-lg lg:text-2xl font-bold bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
               +3 years experience
             </h1>
 
@@ -69,7 +79,7 @@ const MainBanner = () => {
             </h1>
 
             {/* Texto animado con degradado */}
-            <h2 className="text-2xl lg:text-3xl font-semibold text-gray-800 dark:text-white">
+            <h2 className="text-xl lg:text-3xl font-semibold text-gray-800 dark:text-white">
               and I am{' '}
               <span
                   className="bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">

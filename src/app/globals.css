@@ -36,6 +36,11 @@
     .bg-dark-gradient {
         background: linear-gradient(90deg, #020024 20%, #190b36 70%, #281649);
     }
+
+    .rotate-y-180 {
+        transform: rotateY(180deg);
+    }
+
 }
 
 

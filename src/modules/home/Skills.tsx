@@ -40,8 +40,8 @@ const Skills = () => {
                     {/* 🔥 Borde animado con Tailwind */}
                     <div className="absolute inset-0 border-2 border-transparent rounded-2xl group-hover:border-purple-500 transition-all duration-500" />
 
-                    {/* 🔥 Icono con animación en el eje Y */}
-                    <div className="text-5xl text-purple-500 mb-2 transition-transform duration-500 rotate-x-180">
+                    {/* 🔥 Icono con ROTACIÓN en Y con clase personalizada */}
+                    <div className="text-5xl text-purple-500 mb-2 transition-transform duration-500 transform group-hover:rotate-y-180">
                       <Icon />
                     </div>
 
