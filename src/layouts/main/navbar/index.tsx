@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import clsx from 'clsx'
 import { IoMdClose, IoMdMenu } from 'react-icons/io'
@@ -20,39 +20,43 @@ const sections: Section[] = [
 
 const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
-
+  const [activeSection, setActiveSection] = useState<string>('home')
   const { scrollY } = useScroll()
   const { isDarkMode } = useTheme()
 
+  // Efectos de scroll con Framer Motion
   const height = useTransform(scrollY, [0, 50], ['80px', '60px'])
   const padding = useTransform(scrollY, [0, 50], ['20px 0', '10px 0'])
   const backdropBlur = useTransform(scrollY, [0, 50], ['blur(0px)', 'blur(10px)'])
-  const background = useTransform(
-      scrollY,
-      [0, 50],
-      ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.5)'],
-  )
-  const darkBackground = useTransform(
-      scrollY,
-      [0, 50],
-      ['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.5)'],
-  )
+  const background = useTransform(scrollY, [0, 50], ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.5)'])
+  const darkBackground = useTransform(scrollY, [0, 50], ['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.5)'])
 
-  const shadow = useTransform(
-      scrollY,
-      [0, 100],
-      ['0px 0px 0px rgba(0,0,0,0)', '0px 4px 10px rgba(0,0,0,0.2)']
-  )
+  const shadow = useTransform(scrollY, [0, 100], ['0px 0px 0px rgba(0,0,0,0)', '0px 4px 10px rgba(0,0,0,0.2)'])
+  const darkShadow = useTransform(scrollY, [0, 100], ['0px 0px 0px rgba(255,255,255,0)', '0px 4px 10px rgba(255,255,255,0.3)'])
 
-  const darkShadow = useTransform(
-      scrollY,
-      [0, 100],
-      [
-        '0px 0px 0px rgba(255,255,255,0)',
-        '0px 4px 10px rgba(255,255,255,0.3)',
-      ]
-  )
+  // Detección de sección activa con IntersectionObserver
+  useEffect(() => {
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const newSection = sections.find(sec => sec.id === entry.target.id)
+          if (newSection) {
+            setActiveSection(newSection.name)
+            window.history.replaceState(null, '', newSection.href)
+          }
+        }
+      })
+    }, observerOptions)
+
+    sections.forEach(({ id }) => {
+      const sectionElement = document.getElementById(id)
+      if (sectionElement) observer.observe(sectionElement)
+    })
+
+    return () => observer.disconnect()
+  }, [])
 
   return (
       <motion.nav
