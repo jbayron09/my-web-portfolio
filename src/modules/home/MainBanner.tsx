@@ -10,7 +10,7 @@ const roles = [
   'Backend Developer',
   'DevOps Engineer',
   'API Developer',
-  'Technical Mentor'
+  'Technical Mentor',
 ]
 
 const MainBanner = () => {
@@ -105,7 +105,10 @@ const MainBanner = () => {
                     before:absolute before:inset-0 before:bg-gradient-to-l before:from-violet-300 before:to-violet-800
                     before:transition-all before:duration-300 before:ease-in-out
                     before:scale-x-0 hover:before:scale-x-100">
-              <span className="relative z-10">Download CV</span>
+              <a
+                  href="/cv-bairon-bermudez.pdf"
+                  download="Bairon_Bermudez_CV.pdf"
+                  className="relative z-10">Download CV</a>
             </button>
           </div>
 
