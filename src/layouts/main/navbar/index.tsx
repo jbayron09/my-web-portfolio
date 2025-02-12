@@ -65,66 +65,74 @@ const MainNavbar = () => {
   }, [])
 
   return (
-      <motion.nav
-          style={{
-            height,
-            padding,
-            backdropFilter: backdropBlur,
-            background: isDarkMode ? darkBackground : background,
-            boxShadow: isDarkMode ? darkShadow : shadow,
-          }}
-          className={clsx([
-            'fixed top-0 left-0 w-full z-50 transition-all duration-200',
-            isOpen && '!bg-white/70 dark:!bg-black/70',
-          ])}
-      >
-        <div className="container flex items-center gap-8 justify-between">
-          <h1 className="uppercase text-xl lg:text-2xl font-bold bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
-            Portfolio
-          </h1>
+      <>
+        {isOpen && (
+            <div
+                className="fixed inset-0 z-40 md:hidden"
+                onClick={() => setIsOpen(false)}
+            />
+        )}
+        <motion.nav
+            style={{
+              height,
+              padding,
+              backdropFilter: backdropBlur,
+              background: isDarkMode ? darkBackground : background,
+              boxShadow: isDarkMode ? darkShadow : shadow,
+            }}
+            className={clsx([
+              'fixed top-0 left-0 w-full z-50 transition-all duration-200',
+              isOpen && '!bg-white/70 dark:!bg-black/70',
+            ])}
+        >
+          <div className="container flex items-center gap-8 justify-between">
+            <h1 className="uppercase text-xl lg:text-2xl font-bold bg-gradient-to-r from-violet-500 to-violet-950 dark:from-violet-600 dark:to-white bg-clip-text text-transparent">
+              Portfolio
+            </h1>
 
-          <ul
-              className={clsx([
-                isOpen ? 'max-md:block' : 'max-md:hidden',
-                'list-none flex flex-col items-center max-md:backdrop-blur-xl',
-                'md:flex-row md:gap-8 z-20',
-                'max-md:absolute max-md:top-full max-md:left-0 max-md:w-full max-md:bg-neutral-50 max-md:dark:bg-neutral-900',
-              ])}
-          >
-            {sections.map(section => (
-                <li key={section.name} className="max-md:w-full flex">
-                  <a
-                      href={section.href}
-                      className={clsx([
-                        'w-full font-bold text-sm p-4 text-center duration-300 text-neutral-800 dark:text-neutral-100',
-                        'md:p-0 hover:text-violet-700 dark:hover:text-violet-500',
-                        activeSection === section.name && 'text-violet-600 dark:text-violet-400 font-extrabold',
-                      ])}
-                      onClick={() => {
-                        setActiveSection(section.name)
-                        window.history.replaceState(null, '', section.href)
-                        if (isOpen) setIsOpen(false)
-                      }}
-                  >
-                    {section.name}
-                  </a>
-                </li>
-            ))}
-          </ul>
-
-          <div className="max-md:flex items-center gap-2 hidden">
-            <button
+            <ul
                 className={clsx([
-                  isOpen && 'text-purple-500',
-                  'p-2 text-xl rounded-full duration-300 block md:hidden',
+                  isOpen ? 'max-md:block' : 'max-md:hidden',
+                  'list-none flex flex-col items-center max-md:backdrop-blur-xl',
+                  'md:flex-row md:gap-8 z-20',
+                  'max-md:absolute max-md:top-full max-md:left-0 max-md:w-full max-md:bg-neutral-50 max-md:dark:bg-neutral-900',
                 ])}
-                onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ? <IoMdClose/> : <IoMdMenu/>}
-            </button>
+              {sections.map(section => (
+                  <li key={section.name} className="max-md:w-full flex">
+                    <a
+                        href={section.href}
+                        className={clsx([
+                          'w-full font-bold text-sm p-4 text-center duration-300 text-neutral-800 dark:text-neutral-100',
+                          'md:p-0 hover:text-violet-700 dark:hover:text-violet-500',
+                          activeSection === section.name && 'text-violet-600 dark:text-violet-400 font-extrabold',
+                        ])}
+                        onClick={() => {
+                          setActiveSection(section.name)
+                          window.history.replaceState(null, '', section.href)
+                          if (isOpen) setIsOpen(false)
+                        }}
+                    >
+                      {section.name}
+                    </a>
+                  </li>
+              ))}
+            </ul>
+
+            <div className="max-md:flex items-center gap-2 hidden">
+              <button
+                  className={clsx([
+                    isOpen && 'text-purple-500',
+                    'p-2 text-xl rounded-full duration-300 block md:hidden',
+                  ])}
+                  onClick={() => setIsOpen(!isOpen)}
+              >
+                {isOpen ? <IoMdClose/> : <IoMdMenu/>}
+              </button>
+            </div>
           </div>
-        </div>
-      </motion.nav>
+        </motion.nav>
+      </>
   )
 }
 
