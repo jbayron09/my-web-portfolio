@@ -4,6 +4,7 @@ import './globals.css'
 import DarkModeToggleBtn from '@/layouts/main/navbar/DarkModeToggleBtn'
 import { ThemeProvider } from '@/context/ThemeProvider'
 import MainNavbar from '@/layouts/main/navbar'
+import LoadingScreen from '@/layouts/main/LoadingScreen'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,6 +35,7 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
       <ThemeProvider>
+        <LoadingScreen />
         <MainNavbar/>
         <DarkModeToggleBtn/>
         {children}
