@@ -24,7 +24,7 @@ const projects = [
   },
   {
     id: 2,
-    title: 'No Violence Forum - Landing',
+    title: 'Product Launch Page',
     description: 'A high-converting landing page created to promote a product, attract customers, and boost engagement effectively.',
     tags: ['Next.js', 'TypeScript', 'TailwindCSS'],
     image: '/images/projects/landing-taller-premium.png',
