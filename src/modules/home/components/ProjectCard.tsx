@@ -1,6 +1,16 @@
 import { FC, JSX } from 'react'
-import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa'
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiDjango, SiGraphql, SiNodedotjs, SiSass } from 'react-icons/si'
+import { FaAws, FaExternalLinkAlt, FaGithub } from 'react-icons/fa'
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiDjango,
+  SiGraphql,
+  SiNodedotjs,
+  SiSass,
+  SiDocker,
+} from 'react-icons/si'
 import { Project } from '@/modules/home/Projects'
 
 interface ProjectCardProps {
@@ -17,6 +27,8 @@ const tagIcons: Record<string, JSX.Element> = {
   'GraphQL': <SiGraphql />,
   'Node.js': <SiNodedotjs />,
   'Sass': <SiSass />,
+  'Docker': <SiDocker />,
+  'Aws': <FaAws className='text-base'/>,
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
@@ -40,7 +52,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
                      group-hover:bg-gradient-to-r group-hover:from-violet-300 group-hover:to-violet-800"
           >
             {/* description */}
-            <h3 className="text-lg font-semibold group-hover:text-white">{description}</h3>
+            <h3 className="text-sm leading-tight font-medium group-hover:text-white">{description}</h3>
 
             {/* Tech Stack - Icons in Bubble Shape */}
             <div className="mt-3 flex items-center">
